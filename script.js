@@ -1,4 +1,3 @@
-
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
@@ -26,18 +25,25 @@ import {
 // FIREBASE CONFIG
 // ========================================
 
+const firebaseConfig = {
 
-  const firebaseConfig = {
     apiKey: "AIzaSyCWlJLkCSTsUkJvmH-2G8pj5DGLpCgebhM",
-    authDomain: "loginout-3817f.firebaseapp.com",
-    projectId: "loginout-3817f",
-    storageBucket: "loginout-3817f.firebasestorage.app",
-    messagingSenderId: "1064407808895",
-    appId: "1:1064407808895:web:dae1007dcf64183b1f784a",
-    measurementId: "G-LB8ZS8VPFR"
-  };
 
-  // Initialize Firebase
+    authDomain: "loginout-3817f.firebaseapp.com",
+
+    projectId: "loginout-3817f",
+
+    storageBucket: "loginout-3817f.firebasestorage.app",
+
+    messagingSenderId: "1064407808895",
+
+    appId: "1:1064407808895:web:dae1007dcf64183b1f784a",
+
+    measurementId: "G-LB8ZS8VPFR"
+
+};
+
+
 // ========================================
 // INITIALIZE FIREBASE
 // ========================================
@@ -85,8 +91,17 @@ const showLogin =
 const message =
     document.getElementById("message");
 
-const welcomeMessage =
-    document.getElementById("welcomeMessage");
+
+// Pages
+
+const defaultPage =
+    document.getElementById("defaultPage");
+
+const userPage =
+    document.getElementById("userPage");
+
+const adminPage =
+    document.getElementById("adminPage");
 
 
 // ========================================
@@ -95,6 +110,7 @@ const welcomeMessage =
 
 let selectedLoginRole = "user";
 
+
 const userRoleBtn =
     document.getElementById("userRoleBtn");
 
@@ -102,358 +118,451 @@ const adminRoleBtn =
     document.getElementById("adminRoleBtn");
 
 
-userRoleBtn.addEventListener("click", () => {
+userRoleBtn.addEventListener(
+    "click",
+    () => {
 
-    selectedLoginRole = "user";
+        selectedLoginRole = "user";
 
-    userRoleBtn.classList.add("active");
+        userRoleBtn.classList.add("active");
 
-    adminRoleBtn.classList.remove("active");
+        adminRoleBtn.classList.remove("active");
 
-});
+    }
+);
 
 
-adminRoleBtn.addEventListener("click", () => {
+adminRoleBtn.addEventListener(
+    "click",
+    () => {
 
-    selectedLoginRole = "admin";
+        selectedLoginRole = "admin";
 
-    adminRoleBtn.classList.add("active");
+        adminRoleBtn.classList.add("active");
 
-    userRoleBtn.classList.remove("active");
+        userRoleBtn.classList.remove("active");
 
-});
+    }
+);
 
 
 // ========================================
 // SHOW SIGNUP
 // ========================================
 
-showSignup.addEventListener("click", () => {
+showSignup.addEventListener(
+    "click",
+    () => {
 
-    loginSection.classList.add("hidden");
+        loginSection.classList.add("hidden");
 
-    signupSection.classList.remove("hidden");
+        signupSection.classList.remove("hidden");
 
-});
+        showMessage("");
+
+    }
+);
 
 
 // ========================================
 // SHOW LOGIN
 // ========================================
 
-showLogin.addEventListener("click", () => {
+showLogin.addEventListener(
+    "click",
+    () => {
 
-    signupSection.classList.add("hidden");
+        signupSection.classList.add("hidden");
 
-    loginSection.classList.remove("hidden");
+        loginSection.classList.remove("hidden");
 
-});
-
-
-// ========================================
-// USER SIGNUP
-// ========================================
-
-signupForm.addEventListener("submit", async (event) => {
-
-    event.preventDefault();
-
-    const name =
-        document.getElementById("signupName").value.trim();
-
-    const email =
-        document.getElementById("signupEmail").value.trim();
-
-    const phone =
-        document.getElementById("signupPhone").value.trim();
-
-    const password =
-        document.getElementById("signupPassword").value;
-
-    const confirmPassword =
-        document.getElementById("signupConfirmPassword").value;
-
-    const role =
-        document.getElementById("signupRole").value;
-
-
-    if (password !== confirmPassword) {
-
-        showMessage("Passwords do not match.");
-
-        return;
+        showMessage("");
 
     }
+);
 
 
-    try {
+// ========================================
+// SIGNUP
+// ========================================
 
-        showMessage("Creating account...");
+signupForm.addEventListener(
+    "submit",
+    async (event) => {
+
+        event.preventDefault();
 
 
-        // Create Firebase Authentication account
+        const name =
+            document
+                .getElementById("signupName")
+                .value
+                .trim();
 
-        const userCredential =
-            await createUserWithEmailAndPassword(
-                auth,
-                email,
-                password
+
+        const email =
+            document
+                .getElementById("signupEmail")
+                .value
+                .trim();
+
+
+        const phone =
+            document
+                .getElementById("signupPhone")
+                .value
+                .trim();
+
+
+        const password =
+            document
+                .getElementById("signupPassword")
+                .value;
+
+
+        const confirmPassword =
+            document
+                .getElementById("signupConfirmPassword")
+                .value;
+
+
+        const role =
+            document
+                .getElementById("signupRole")
+                .value;
+
+
+        if (password !== confirmPassword) {
+
+            showMessage(
+                "Passwords do not match."
+            );
+
+            return;
+        }
+
+
+        try {
+
+            showMessage(
+                "Creating account..."
             );
 
 
-        const user =
-            userCredential.user;
+            const userCredential =
+                await createUserWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
 
 
-        // Save additional information in Firestore
-
-        await setDoc(
-            doc(db, "users", user.uid),
-            {
-
-                uid: user.uid,
-
-                name: name,
-
-                email: email,
-
-                phone: phone,
-
-                role: role,
-
-                provider: "email",
-
-                createdAt: serverTimestamp()
-
-            }
-        );
+            const user =
+                userCredential.user;
 
 
-        showMessage("Account created successfully!");
+            await setDoc(
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                ),
+                {
+
+                    uid: user.uid,
+
+                    name: name,
+
+                    email: email,
+
+                    phone: phone,
+
+                    role: role,
+
+                    provider: "email",
+
+                    createdAt:
+                        serverTimestamp()
+
+                }
+            );
 
 
-    } catch (error) {
+            showMessage(
+                "Account created successfully!"
+            );
 
-        console.error(error);
 
-        showMessage(
-            getFirebaseError(error)
-        );
+            signupForm.reset();
+
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                getFirebaseError(error)
+            );
+
+        }
 
     }
-
-});
+);
 
 
 // ========================================
 // LOGIN
 // ========================================
 
-loginForm.addEventListener("submit", async (event) => {
+loginForm.addEventListener(
+    "submit",
+    async (event) => {
 
-    event.preventDefault();
-
-
-    const email =
-        document.getElementById("loginEmail").value.trim();
-
-    const password =
-        document.getElementById("loginPassword").value;
+        event.preventDefault();
 
 
-    try {
-
-        showMessage("Logging in...");
-
-
-        const userCredential =
-            await signInWithEmailAndPassword(
-                auth,
-                email,
-                password
-            );
+        const email =
+            document
+                .getElementById("loginEmail")
+                .value
+                .trim();
 
 
-        const user =
-            userCredential.user;
+        const password =
+            document
+                .getElementById("loginPassword")
+                .value;
 
 
-        // Check user's stored role
-
-        const userDocument =
-            await getDoc(
-                doc(db, "users", user.uid)
-            );
-
-
-        if (!userDocument.exists()) {
+        try {
 
             showMessage(
-                "User profile not found."
+                "Logging in..."
             );
 
-            await signOut(auth);
 
-            return;
-
-        }
-
-
-        const userData =
-            userDocument.data();
+            const userCredential =
+                await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
 
 
-        // Check selected role
+            const user =
+                userCredential.user;
 
-        if (userData.role !== selectedLoginRole) {
+
+            const userDocument =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
+
+
+            if (!userDocument.exists()) {
+
+                showMessage(
+                    "User profile not found."
+                );
+
+                await signOut(auth);
+
+                return;
+            }
+
+
+            const userData =
+                userDocument.data();
+
+
+            if (
+                userData.role !==
+                selectedLoginRole
+            ) {
+
+                showMessage(
+                    `This account is registered as ${userData.role}, not ${selectedLoginRole}.`
+                );
+
+
+                await signOut(auth);
+
+                return;
+            }
+
 
             showMessage(
-                `This account is registered as ${userData.role}, not ${selectedLoginRole}.`
+                "Login successful!"
             );
 
-            await signOut(auth);
 
-            return;
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                getFirebaseError(error)
+            );
 
         }
-
-
-        showMessage("Login successful!");
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        showMessage(
-            getFirebaseError(error)
-        );
 
     }
-
-});
+);
 
 
 // ========================================
 // GOOGLE LOGIN
 // ========================================
 
-googleLogin.addEventListener("click", async () => {
+googleLogin.addEventListener(
+    "click",
+    async () => {
 
-    try {
+        try {
 
-        showMessage("Opening Google login...");
-
-
-        const result =
-            await signInWithPopup(
-                auth,
-                googleProvider
+            showMessage(
+                "Opening Google login..."
             );
 
 
-        const user =
-            result.user;
+            const result =
+                await signInWithPopup(
+                    auth,
+                    googleProvider
+                );
 
 
-        const userDocument =
-            await getDoc(
-                doc(db, "users", user.uid)
+            const user =
+                result.user;
+
+
+            const userDocument =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
+
+
+            if (!userDocument.exists()) {
+
+                await setDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    ),
+                    {
+
+                        uid: user.uid,
+
+                        name:
+                            user.displayName ||
+                            "Google User",
+
+                        email:
+                            user.email,
+
+                        phone:
+                            user.phoneNumber ||
+                            "",
+
+                        role: "user",
+
+                        provider: "google",
+
+                        createdAt:
+                            serverTimestamp()
+
+                    }
+                );
+
+            }
+
+
+            showMessage(
+                "Google login successful!"
             );
 
 
-        // First Google login
+        } catch (error) {
 
-        if (!userDocument.exists()) {
+            console.error(error);
 
-            await setDoc(
-                doc(db, "users", user.uid),
-                {
-
-                    uid: user.uid,
-
-                    name: user.displayName || "Google User",
-
-                    email: user.email,
-
-                    phone: user.phoneNumber || "",
-
-                    role: "user",
-
-                    provider: "google",
-
-                    createdAt: serverTimestamp()
-
-                }
+            showMessage(
+                getFirebaseError(error)
             );
 
         }
 
-
-        showMessage("Google login successful!");
-
-
-    } catch (error) {
-
-        console.error(error);
-
-        showMessage(
-            getFirebaseError(error)
-        );
-
     }
-
-});
+);
 
 
 // ========================================
 // LOGOUT
 // ========================================
 
-logoutBtn.addEventListener("click", async () => {
+logoutBtn.addEventListener(
+    "click",
+    async () => {
 
-    try {
+        try {
 
-        await signOut(auth);
+            await signOut(auth);
 
-        showMessage("Logged out successfully.");
+            showMessage(
+                "Logged out successfully."
+            );
 
-    } catch (error) {
 
-        console.error(error);
+            showDefaultPage();
 
-        showMessage(
-            getFirebaseError(error)
-        );
+
+        } catch (error) {
+
+            console.error(error);
+
+            showMessage(
+                getFirebaseError(error)
+            );
+
+        }
 
     }
-
-});
+);
 
 
 // ========================================
 // AUTH STATE
 // ========================================
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-    if (user) {
+        if (user) {
 
-        await displayUser(user);
+            await displayUser(
+                user
+            );
 
-    } else {
+        } else {
 
-        loginSection.classList.remove("hidden");
+            showLoginInterface();
 
-        signupSection.classList.add("hidden");
+            showDefaultPage();
 
-        userSection.classList.add("hidden");
-
-        welcomeMessage.innerHTML = "";
+        }
 
     }
-
-});
+);
 
 
 // ========================================
@@ -466,7 +575,11 @@ async function displayUser(user) {
 
         const userDocument =
             await getDoc(
-                doc(db, "users", user.uid)
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                )
             );
 
 
@@ -479,13 +592,6 @@ async function displayUser(user) {
                 userDocument.data();
 
         }
-
-
-        loginSection.classList.add("hidden");
-
-        signupSection.classList.add("hidden");
-
-        userSection.classList.remove("hidden");
 
 
         const name =
@@ -505,32 +611,110 @@ async function displayUser(user) {
             "user";
 
 
-        document.getElementById(
-            "displayName"
-        ).textContent = name;
+        // ------------------------------
+        // Sidebar profile
+        // ------------------------------
+
+        document
+            .getElementById("displayName")
+            .textContent = name;
 
 
-        document.getElementById(
-            "displayEmail"
-        ).textContent = email;
+        document
+            .getElementById("displayEmail")
+            .textContent = email;
 
 
-        document.getElementById(
-            "displayRole"
-        ).textContent =
-            role.toUpperCase();
+        document
+            .getElementById("displayRole")
+            .textContent =
+                role.toUpperCase();
 
 
-        document.getElementById(
-            "profileInitial"
-        ).textContent =
-            name.charAt(0).toUpperCase();
+        document
+            .getElementById("profileInitial")
+            .textContent =
+                name
+                    .charAt(0)
+                    .toUpperCase();
 
 
-        welcomeMessage.innerHTML = `
-            <h2>Welcome, ${name}!</h2>
-            <p>You are logged in as <strong>${role}</strong>.</p>
-        `;
+        // ------------------------------
+        // Show logged-in sidebar
+        // ------------------------------
+
+        loginSection.classList.add(
+            "hidden"
+        );
+
+        signupSection.classList.add(
+            "hidden"
+        );
+
+        userSection.classList.remove(
+            "hidden"
+        );
+
+
+        // ------------------------------
+        // Show correct dashboard
+        // ------------------------------
+
+        defaultPage.classList.add(
+            "hidden"
+        );
+
+
+        if (role === "admin") {
+
+            userPage.classList.add(
+                "hidden"
+            );
+
+            adminPage.classList.remove(
+                "hidden"
+            );
+
+
+            document
+                .getElementById(
+                    "adminWelcomeName"
+                )
+                .textContent = name;
+
+
+            document
+                .getElementById(
+                    "adminDashboardEmail"
+                )
+                .textContent = email;
+
+
+        } else {
+
+            adminPage.classList.add(
+                "hidden"
+            );
+
+            userPage.classList.remove(
+                "hidden"
+            );
+
+
+            document
+                .getElementById(
+                    "userWelcomeName"
+                )
+                .textContent = name;
+
+
+            document
+                .getElementById(
+                    "userDashboardEmail"
+                )
+                .textContent = email;
+
+        }
 
 
     } catch (error) {
@@ -538,6 +722,48 @@ async function displayUser(user) {
         console.error(error);
 
     }
+
+}
+
+
+// ========================================
+// SHOW LOGIN
+// ========================================
+
+function showLoginInterface() {
+
+    loginSection.classList.remove(
+        "hidden"
+    );
+
+    signupSection.classList.add(
+        "hidden"
+    );
+
+    userSection.classList.add(
+        "hidden"
+    );
+
+}
+
+
+// ========================================
+// DEFAULT PAGE
+// ========================================
+
+function showDefaultPage() {
+
+    defaultPage.classList.remove(
+        "hidden"
+    );
+
+    userPage.classList.add(
+        "hidden"
+    );
+
+    adminPage.classList.add(
+        "hidden"
+    );
 
 }
 
@@ -554,7 +780,7 @@ function showMessage(text) {
 
 
 // ========================================
-// FIREBASE ERROR HANDLER
+// FIREBASE ERROR
 // ========================================
 
 function getFirebaseError(error) {
@@ -562,22 +788,41 @@ function getFirebaseError(error) {
     switch (error.code) {
 
         case "auth/email-already-in-use":
+
             return "This email is already registered.";
 
+
         case "auth/invalid-email":
+
             return "Please enter a valid email.";
 
+
         case "auth/weak-password":
+
             return "Password should be at least 6 characters.";
 
+
         case "auth/invalid-credential":
+
             return "Invalid email or password.";
 
+
         case "auth/popup-closed-by-user":
+
             return "Google login was cancelled.";
 
+
+        case "auth/unauthorized-domain":
+
+            return "This website domain is not authorized for Google login.";
+
+
         default:
-            return error.message || "Something went wrong.";
+
+            return (
+                error.message ||
+                "Something went wrong."
+            );
 
     }
 
