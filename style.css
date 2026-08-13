@@ -1,0 +1,196 @@
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: blue;
+}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    display: flex;
+}
+
+
+/* SIDEBAR */
+
+.sidebar {
+    width: 300px;
+    min-height: 100vh;
+    background: white;
+    padding: 25px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+
+/* ROLE BUTTONS */
+
+.role-buttons {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.role-buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: #ddd;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.role-buttons button.active {
+    background: #222;
+    color: white;
+}
+
+
+/* INPUTS */
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+
+/* MAIN BUTTON */
+
+.main-btn {
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.main-btn:hover {
+    background: #444;
+}
+
+
+/* GOOGLE BUTTON */
+
+.google-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.google-btn:hover {
+    background: #f1f1f1;
+}
+
+
+/* SIGNUP TEXT */
+
+.signup-text {
+    text-align: center;
+    font-size: 14px;
+}
+
+.signup-text button {
+    border: none;
+    background: none;
+    color: #0066ff;
+    cursor: pointer;
+}
+
+
+/* PROFILE */
+
+.profile {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.profile-circle {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    background: #222;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 25px;
+}
+
+.profile p {
+    font-size: 13px;
+    color: #666;
+    word-break: break-word;
+}
+
+.role {
+    display: inline-block;
+    padding: 5px 12px;
+    background: #eee;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+
+/* LOGOUT */
+
+.logout-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: #d32f2f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
+/* MESSAGE */
+
+#message {
+    margin-top: 15px;
+    font-size: 13px;
+}
+
+
+/* MAIN CONTENT */
+
+.content {
+    flex: 1;
+    padding: 60px;
+}
+
+.content h1 {
+    font-size: 50px;
+}
+
+
+/* HIDDEN */
+
+.hidden {
+    display: none;
+}
