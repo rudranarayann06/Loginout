@@ -1,196 +1,899 @@
-body {
-    text-align: center;
-    font-family: Arial, sans-serif;
-}
-
-h1 {
-    color: blue;
-}
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
+
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #f5f7fb;
+
+    color: #222;
+
     display: flex;
+
+    min-height: 100vh;
 }
 
 
-/* SIDEBAR */
+/* ================= SIDEBAR ================= */
 
 .sidebar {
-    width: 300px;
+
+    width: 330px;
+
     min-height: 100vh;
+
     background: white;
-    padding: 25px;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+
+    padding: 30px;
+
+    box-shadow:
+        4px 0 20px rgba(0, 0, 0, 0.08);
+
+    position: fixed;
+
+    left: 0;
+
+    top: 0;
+
+    bottom: 0;
+
+    overflow-y: auto;
 }
 
-.sidebar h2 {
-    margin-top: 0;
-    margin-bottom: 25px;
+
+/* ================= LOGO ================= */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-bottom: 40px;
 }
 
 
-/* ROLE BUTTONS */
+.logo-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 22px;
+
+    font-weight: bold;
+}
+
+
+.logo h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 3px;
+}
+
+
+.logo span {
+
+    font-size: 11px;
+
+    color: #888;
+}
+
+
+/* ================= SECTION ================= */
+
+.section-title {
+
+    margin-bottom: 18px;
+
+    font-size: 20px;
+}
+
+
+/* ================= ROLE BUTTONS ================= */
 
 .role-buttons {
+
     display: flex;
-    gap: 5px;
-    margin-bottom: 15px;
+
+    gap: 7px;
+
+    margin-bottom: 20px;
 }
+
 
 .role-buttons button {
+
     flex: 1;
-    padding: 10px;
+
+    padding: 11px;
+
     border: none;
-    background: #ddd;
+
+    border-radius: 7px;
+
+    background: #e7e7e7;
+
     cursor: pointer;
-    border-radius: 5px;
+
+    font-size: 14px;
+
+    transition: 0.2s;
 }
 
+
+.role-buttons button:hover {
+
+    background: #d8d8d8;
+}
+
+
 .role-buttons button.active {
-    background: #222;
+
+    background: #111;
+
     color: white;
 }
 
 
-/* INPUTS */
+/* ================= LABELS ================= */
+
+label {
+
+    display: block;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    margin-bottom: 6px;
+
+    color: #444;
+}
+
+
+/* ================= INPUT ================= */
 
 input,
 select {
+
     width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+
+    padding: 13px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
     font-size: 14px;
+
+    outline: none;
+
+    transition: 0.2s;
 }
 
 
-/* MAIN BUTTON */
+input:focus,
+select:focus {
+
+    border-color: #222;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+
+/* ================= MAIN BUTTON ================= */
 
 .main-btn {
+
     width: 100%;
-    padding: 12px;
-    background: #222;
-    color: white;
+
+    padding: 13px;
+
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+
+    border-radius: 8px;
+
+    background: #111;
+
+    color: white;
+
     font-size: 15px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.2s;
 }
+
 
 .main-btn:hover {
-    background: #444;
+
+    background: #333;
+
+    transform: translateY(-1px);
 }
 
 
-/* GOOGLE BUTTON */
+/* ================= DIVIDER ================= */
 
-.google-btn {
-    width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    cursor: pointer;
-}
+.divider {
 
-.google-btn:hover {
-    background: #f1f1f1;
-}
-
-
-/* SIGNUP TEXT */
-
-.signup-text {
-    text-align: center;
-    font-size: 14px;
-}
-
-.signup-text button {
-    border: none;
-    background: none;
-    color: #0066ff;
-    cursor: pointer;
-}
-
-
-/* PROFILE */
-
-.profile {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.profile-circle {
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: #222;
-    color: white;
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    margin: auto;
-    font-size: 25px;
-}
 
-.profile p {
-    font-size: 13px;
-    color: #666;
-    word-break: break-word;
-}
+    gap: 10px;
 
-.role {
-    display: inline-block;
-    padding: 5px 12px;
-    background: #eee;
-    border-radius: 20px;
+    margin: 20px 0;
+
+    color: #999;
+
     font-size: 12px;
 }
 
 
-/* LOGOUT */
+.divider::before,
+.divider::after {
+
+    content: "";
+
+    flex: 1;
+
+    height: 1px;
+
+    background: #ddd;
+}
+
+
+/* ================= GOOGLE ================= */
+
+.google-btn {
+
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid #ddd;
+
+    background: white;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+.google-btn:hover {
+
+    background: #f7f7f7;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+
+.google-icon {
+
+    font-weight: bold;
+
+    color: #4285f4;
+
+    font-size: 18px;
+}
+
+
+/* ================= SIGNUP ================= */
+
+.signup-text {
+
+    text-align: center;
+
+    margin-top: 20px;
+
+    font-size: 13px;
+
+    color: #666;
+}
+
+
+.signup-text button {
+
+    border: none;
+
+    background: none;
+
+    color: #1463ff;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    margin-left: 4px;
+}
+
+
+/* ================= PROFILE ================= */
+
+.profile-card {
+
+    text-align: center;
+
+    padding: 20px 10px;
+
+    border-radius: 12px;
+
+    background: #f7f7f7;
+
+    margin-bottom: 20px;
+}
+
+
+.profile-circle {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin: auto auto 12px;
+
+    font-size: 25px;
+
+    font-weight: bold;
+}
+
+
+.profile-card h3 {
+
+    margin-bottom: 5px;
+}
+
+
+.profile-card p {
+
+    font-size: 12px;
+
+    color: #777;
+
+    word-break: break-word;
+
+    margin-bottom: 10px;
+}
+
+
+.role {
+
+    display: inline-block;
+
+    background: #111;
+
+    color: white;
+
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+}
+
+
+/* ================= MENU ================= */
+
+.sidebar-menu {
+
+    margin-top: 20px;
+}
+
+
+.menu-item {
+
+    width: 100%;
+
+    border: none;
+
+    background: transparent;
+
+    padding: 12px;
+
+    text-align: left;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    margin-bottom: 5px;
+
+    font-size: 14px;
+}
+
+
+.menu-item.active {
+
+    background: #f0f0f0;
+
+    font-weight: bold;
+}
+
+
+/* ================= LOGOUT ================= */
 
 .logout-btn {
+
     width: 100%;
-    margin-top: 25px;
+
     padding: 12px;
-    background: #d32f2f;
-    color: white;
+
+    margin-top: 20px;
+
     border: none;
-    border-radius: 5px;
+
+    border-radius: 8px;
+
+    background: #ef4444;
+
+    color: white;
+
+    font-weight: bold;
+
     cursor: pointer;
+
+    transition: 0.2s;
 }
 
 
-/* MESSAGE */
+.logout-btn:hover {
 
-#message {
+    background: #dc2626;
+}
+
+
+/* ================= MESSAGE ================= */
+
+.message {
+
+    text-align: center;
+
+    font-size: 12px;
+
     margin-top: 15px;
-    font-size: 13px;
+
+    color: #555;
 }
 
 
-/* MAIN CONTENT */
+/* ================= MAIN CONTENT ================= */
 
 .content {
-    flex: 1;
+
+    margin-left: 330px;
+
+    width: calc(100% - 330px);
+
+    min-height: 100vh;
+
     padding: 60px;
 }
 
-.content h1 {
-    font-size: 50px;
+
+/* ================= HERO ================= */
+
+.hero {
+
+    max-width: 800px;
+
+    margin: 80px auto 60px;
+
+    text-align: center;
 }
 
 
-/* HIDDEN */
+.badge {
+
+    display: inline-block;
+
+    padding: 7px 14px;
+
+    background: #e9edff;
+
+    color: #3654d9;
+
+    border-radius: 30px;
+
+    font-size: 12px;
+
+    font-weight: bold;
+
+    margin-bottom: 20px;
+}
+
+
+.hero h1 {
+
+    font-size: 60px;
+
+    line-height: 1.1;
+
+    margin-bottom: 20px;
+}
+
+
+.hero h1 span {
+
+    color: #2637ff;
+}
+
+
+.hero p {
+
+    font-size: 18px;
+
+    color: #777;
+
+    line-height: 1.6;
+}
+
+
+.hero-actions {
+
+    margin-top: 30px;
+}
+
+
+.hero-btn {
+
+    border: none;
+
+    background: #111;
+
+    color: white;
+
+    padding: 14px 28px;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+
+
+/* ================= FEATURES ================= */
+
+.features {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    max-width: 1000px;
+
+    margin: auto;
+}
+
+
+.feature-card {
+
+    background: white;
+
+    padding: 28px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.feature-icon {
+
+    font-size: 30px;
+
+    margin-bottom: 15px;
+}
+
+
+.feature-card h3 {
+
+    margin-bottom: 10px;
+}
+
+
+.feature-card p {
+
+    color: #777;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* ================= DASHBOARD ================= */
+
+.dashboard {
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+
+.welcome-card {
+
+    border-radius: 20px;
+
+    padding: 45px;
+
+    color: white;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 25px;
+}
+
+
+.user-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #4f46e5
+        );
+}
+
+
+.admin-card {
+
+    background:
+        linear-gradient(
+            135deg,
+            #111827,
+            #374151
+        );
+}
+
+
+.small-label {
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    opacity: 0.8;
+}
+
+
+.welcome-card h1 {
+
+    font-size: 38px;
+
+    margin: 10px 0;
+}
+
+
+.welcome-card p {
+
+    opacity: 0.85;
+
+    max-width: 600px;
+
+    line-height: 1.5;
+}
+
+
+.dashboard-icon {
+
+    font-size: 70px;
+}
+
+
+/* ================= DASHBOARD GRID ================= */
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+.info-card {
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.info-card span {
+
+    font-size: 12px;
+
+    color: #888;
+}
+
+
+.info-card h2 {
+
+    margin-top: 10px;
+
+    font-size: 18px;
+
+    word-break: break-word;
+}
+
+
+.success {
+
+    color: #16a34a;
+}
+
+
+.admin-text {
+
+    color: #7c3aed;
+}
+
+
+/* ================= PAGE SECTION ================= */
+
+.page-section {
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+
+.page-section h2 {
+
+    margin-bottom: 10px;
+}
+
+
+.page-section p {
+
+    color: #777;
+
+    line-height: 1.6;
+}
+
+
+/* ================= HIDDEN ================= */
 
 .hidden {
-    display: none;
+
+    display: none !important;
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 800px) {
+
+    .sidebar {
+
+        position: relative;
+
+        width: 100%;
+
+        min-height: auto;
+    }
+
+
+    .content {
+
+        margin-left: 0;
+
+        width: 100%;
+
+        padding: 30px;
+    }
+
+
+    body {
+
+        display: block;
+    }
+
+
+    .hero h1 {
+
+        font-size: 40px;
+    }
+
+
+    .features {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns: 1fr;
+    }
+
+
+    .welcome-card {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 20px;
+    }
+
 }
