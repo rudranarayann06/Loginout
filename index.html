@@ -1,57 +1,99 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Hello World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login System</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <!-- LEFT SIDEBAR -->
+    <!-- ================= SIDEBAR ================= -->
+
     <aside class="sidebar">
 
-        <h2>Login / Logout</h2>
+        <div class="logo">
+            <div class="logo-icon">L</div>
+            <div>
+                <h2>LoginSystem</h2>
+                <span>Secure Access</span>
+            </div>
+        </div>
 
-        <!-- LOGIN SECTION -->
+
+        <!-- LOGIN -->
+
         <div id="loginSection">
 
+            <h3 class="section-title">
+                Login / Logout
+            </h3>
+
             <div class="role-buttons">
+
                 <button id="userRoleBtn" class="active">
-                    Login as User
+                    User
                 </button>
 
                 <button id="adminRoleBtn">
-                    Login as Admin
+                    Admin
                 </button>
+
             </div>
 
+
             <form id="loginForm">
+
+                <label>Email</label>
 
                 <input
                     type="email"
                     id="loginEmail"
-                    placeholder="Email"
+                    placeholder="Enter your email"
                     required
                 >
+
+
+                <label>Password</label>
 
                 <input
                     type="password"
                     id="loginPassword"
-                    placeholder="Password"
+                    placeholder="Enter your password"
                     required
                 >
 
-                <button type="submit" class="main-btn">
+
+                <button
+                    type="submit"
+                    class="main-btn"
+                >
                     Login
                 </button>
 
             </form>
 
-            <button id="googleLogin" class="google-btn">
-                🔵 Continue with Google
+
+            <div class="divider">
+                <span>OR</span>
+            </div>
+
+
+            <button
+                id="googleLogin"
+                class="google-btn"
+            >
+                <span class="google-icon">G</span>
+                Continue with Google
             </button>
 
+
             <p class="signup-text">
-                New user?
+                Don't have an account?
                 <button id="showSignup">
                     Sign Up
                 </button>
@@ -60,133 +102,467 @@
         </div>
 
 
-        <!-- SIGNUP SECTION -->
-        <div id="signupSection" class="hidden">
+        <!-- ================= SIGNUP ================= -->
 
-            <h3>Create Account</h3>
+        <div
+            id="signupSection"
+            class="hidden"
+        >
+
+            <h3 class="section-title">
+                Create Account
+            </h3>
+
 
             <form id="signupForm">
+
+                <label>Full Name</label>
 
                 <input
                     type="text"
                     id="signupName"
-                    placeholder="Full Name"
+                    placeholder="Your full name"
                     required
                 >
+
+
+                <label>Email</label>
 
                 <input
                     type="email"
                     id="signupEmail"
-                    placeholder="Email"
+                    placeholder="Your email"
                     required
                 >
+
+
+                <label>Phone Number</label>
 
                 <input
                     type="tel"
                     id="signupPhone"
-                    placeholder="Phone Number"
+                    placeholder="Your phone number"
                     required
                 >
+
+
+                <label>Password</label>
 
                 <input
                     type="password"
                     id="signupPassword"
-                    placeholder="Password"
+                    placeholder="Minimum 6 characters"
                     minlength="6"
                     required
                 >
+
+
+                <label>Confirm Password</label>
 
                 <input
                     type="password"
                     id="signupConfirmPassword"
-                    placeholder="Confirm Password"
+                    placeholder="Confirm password"
                     minlength="6"
                     required
                 >
 
+
                 <select id="signupRole">
 
                     <option value="user">
-                        User
+                        Create User Account
                     </option>
 
                     <option value="admin">
-                        Admin
+                        Create Admin Account
                     </option>
 
                 </select>
 
-                <button type="submit" class="main-btn">
+
+                <button
+                    type="submit"
+                    class="main-btn"
+                >
                     Create Account
                 </button>
 
             </form>
 
+
             <p class="signup-text">
+
                 Already have an account?
+
                 <button id="showLogin">
                     Login
                 </button>
+
             </p>
 
         </div>
 
 
-        <!-- LOGGED IN SECTION -->
-        <div id="userSection" class="hidden">
+        <!-- ================= LOGGED IN ================= -->
 
-            <div class="profile">
+        <div
+            id="userSection"
+            class="hidden"
+        >
 
-                <div class="profile-circle" id="profileInitial">
+            <div class="profile-card">
+
+                <div
+                    class="profile-circle"
+                    id="profileInitial"
+                >
                     U
                 </div>
+
 
                 <h3 id="displayName">
                     User
                 </h3>
 
+
                 <p id="displayEmail">
                     email@example.com
                 </p>
 
-                <span id="displayRole" class="role">
-                    User
+
+                <span
+                    id="displayRole"
+                    class="role"
+                >
+                    USER
                 </span>
 
             </div>
 
-            <button id="logoutBtn" class="logout-btn">
+
+            <div class="sidebar-menu">
+
+                <button class="menu-item active">
+                    🏠 Dashboard
+                </button>
+
+                <button class="menu-item">
+                    👤 Profile
+                </button>
+
+            </div>
+
+
+            <button
+                id="logoutBtn"
+                class="logout-btn"
+            >
                 Logout
             </button>
 
         </div>
 
 
-        <p id="message"></p>
+        <p
+            id="message"
+            class="message"
+        ></p>
 
     </aside>
 
 
-    <!-- MAIN CONTENT -->
+    <!-- ================= MAIN CONTENT ================= -->
+
     <main class="content">
 
-        <h1>Hello World</h1>
 
-        <p>
-            Welcome to my website.
-        </p>
+        <!-- DEFAULT -->
 
-        <div id="welcomeMessage"></div>
+        <div id="defaultPage">
+
+            <div class="hero">
+
+                <span class="badge">
+                    🔐 Secure Authentication
+                </span>
+
+                <h1>
+                    Welcome to
+                    <span>LoginSystem</span>
+                </h1>
+
+                <p>
+                    A simple and secure authentication
+                    system powered by Firebase.
+                </p>
+
+                <div class="hero-actions">
+
+                    <button
+                        class="hero-btn"
+                        onclick="document.getElementById('loginEmail').focus()"
+                    >
+                        Get Started
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="features">
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🔐
+                    </div>
+
+                    <h3>
+                        Secure Login
+                    </h3>
+
+                    <p>
+                        Secure email and password
+                        authentication.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        🌐
+                    </div>
+
+                    <h3>
+                        Google Login
+                    </h3>
+
+                    <p>
+                        Quickly access your account
+                        using Google.
+                    </p>
+
+                </div>
+
+
+                <div class="feature-card">
+
+                    <div class="feature-icon">
+                        ⚡
+                    </div>
+
+                    <h3>
+                        Fast & Simple
+                    </h3>
+
+                    <p>
+                        Easy access to your personalized
+                        dashboard.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- USER PAGE -->
+
+        <div
+            id="userPage"
+            class="dashboard hidden"
+        >
+
+            <div class="welcome-card user-card">
+
+                <div>
+
+                    <span class="small-label">
+                        USER DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome,
+                        <span id="userWelcomeName">
+                            User
+                        </span> 👋
+                    </h1>
+
+                    <p>
+                        We're happy to have you here.
+                        Your account is successfully logged in.
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-icon">
+                    👤
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="info-card">
+
+                    <span>Account Type</span>
+
+                    <h2>
+                        User
+                    </h2>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>Email</span>
+
+                    <h2 id="userDashboardEmail">
+                        -
+                    </h2>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>Account Status</span>
+
+                    <h2 class="success">
+                        ● Active
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="page-section">
+
+                <h2>
+                    Your Dashboard
+                </h2>
+
+                <p>
+                    This is your personal user area.
+                    You can add your application features
+                    here later.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADMIN PAGE -->
+
+        <div
+            id="adminPage"
+            class="dashboard hidden"
+        >
+
+            <div class="welcome-card admin-card">
+
+                <div>
+
+                    <span class="small-label">
+                        ADMIN DASHBOARD
+                    </span>
+
+                    <h1>
+                        Welcome,
+                        <span id="adminWelcomeName">
+                            Admin
+                        </span> 👋
+                    </h1>
+
+                    <p>
+                        You have administrator access
+                        to this application.
+                    </p>
+
+                </div>
+
+
+                <div class="dashboard-icon">
+                    🛡️
+                </div>
+
+            </div>
+
+
+            <div class="dashboard-grid">
+
+                <div class="info-card">
+
+                    <span>Account Type</span>
+
+                    <h2>
+                        Administrator
+                    </h2>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>Email</span>
+
+                    <h2 id="adminDashboardEmail">
+                        -
+                    </h2>
+
+                </div>
+
+
+                <div class="info-card">
+
+                    <span>Access Level</span>
+
+                    <h2 class="admin-text">
+                        Full Access
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <div class="page-section">
+
+                <h2>
+                    Admin Dashboard
+                </h2>
+
+                <p>
+                    This is your administrator area.
+                    User management, analytics and other
+                    administrative features can be added here.
+                </p>
+
+            </div>
+
+        </div>
+
 
     </main>
 
 
     <!-- Firebase -->
-    <script type="module" src="script.js"></script>
+
+    <script
+        type="module"
+        src="script.js"
+    ></script>
 
 </body>
-</html>
 
-    <script src="script.js"></script>
-</body>
 </html>
